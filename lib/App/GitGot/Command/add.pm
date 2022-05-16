@@ -52,7 +52,7 @@ sub _execute {
     @dirs = Path::Iterator::Rule->new->dir->is_git->all(@dirs);
   }
 
-  $self->_process_dir($_) for map { path($_)->absolute } @dirs;
+  $self->_process_dir($_) for map { path($_)->absolute->realpath } @dirs;
 }
 
 sub _build_new_entry_from_user_input {
